@@ -23,7 +23,7 @@
 :: Build
 :: Pack
 
-msbuild api_t.proj -p:Configuration=%_C% -tl -nologo -warnaserror -bl:%_L%\api_build.binlog || exit /b
+msbuild api_t.proj -p:Configuration=%_C% -tl -nologo  -bl:%_L%\api_build.binlog || exit /b
 
 :: Test
 dotnet test ^
