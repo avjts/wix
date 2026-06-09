@@ -332,9 +332,6 @@
     <ClInclude Include="inc\reswutil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\rmutil.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="inc\rexutil.h">
       <Filter>Header Files</Filter>
     </ClInclude>

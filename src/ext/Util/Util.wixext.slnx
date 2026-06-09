@@ -1,22 +1,28 @@
 <Solution>
   <Configurations>
     <Platform Name="Any CPU" />
+    <Platform Name="ARM64" />
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
   <Project Path="be/utilbe.vcxproj" Id="630c1ee7-2517-4a8c-83e3-da1150308b58">
-    <Platform Project="Win32" />
+    <Platform Solution="*|Any CPU" Project="Win32" />
+    <Platform Solution="*|x64" Project="Win32" />
+    <Platform Solution="Release|ARM64" Project="ARM64EC" />
     <Build Solution="*|x64" Project="false" />
   </Project>
   <Project Path="ca/utilca.vcxproj" Id="076018f7-19bd-423a-abbf-229273da08d8">
-    <Platform Project="Win32" />
+    <Platform Solution="*|ARM64" Project="ARM64EC" />
+    <Platform Solution="*|x64" Project="Win32" />
+    <Platform Solution="Debug|Any CPU" Project="ARM64EC" />
+    <Platform Solution="Release|Any CPU" Project="Win32" />
     <Build Solution="*|x64" Project="false" />
   </Project>
   <Project Path="test/WixToolsetTest.Util/WixToolsetTest.Util.csproj" />
   <Project Path="wixext/WixToolset.Util.wixext.csproj" />
-  <Project Path="wixlib/util.wixproj">
-    <Platform Project="x86" />
-    <Build Solution="*|Any CPU" />
-    <Build Solution="*|x86" />
+  <Project Path="wixlib/util.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0">
+    <Platform Solution="*|Any CPU" Project="x86" />
+    <Platform Solution="*|x64" Project="x86" />
+    <Build Solution="*|x64" Project="false" />
   </Project>
 </Solution>

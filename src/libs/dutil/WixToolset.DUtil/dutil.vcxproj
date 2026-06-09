@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information. -->
-
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|ARM64">
       <Configuration>Debug</Configuration>
       <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64EC">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64EC</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -14,6 +17,10 @@
     <ProjectConfiguration Include="Release|ARM64">
       <Configuration>Release</Configuration>
       <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64EC">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64EC</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
@@ -28,7 +35,6 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1244E671-F108-4334-BA52-8A7517F26ECD}</ProjectGuid>
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -36,13 +42,18 @@
     <CharacterSet>MultiByte</CharacterSet>
     <Description>WiX Toolset native library foundation</Description>
     <PackageId>WixToolset.DUtil</PackageId>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-
   <Import Project="..\..\..\NativeMultiTargeting.Build.props" />
-
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64EC'">
+    <BuildAsX>true</BuildAsX>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64EC'">
+    <BuildAsX>true</BuildAsX>
+    <OutDir>$(OutputPath)$(PlatformToolset)\$(Platform)\</OutDir>
+  </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="acl2util.cpp" />
     <ClCompile Include="aclutil.cpp" />
@@ -117,7 +128,6 @@
     <ClCompile Include="wuautil.cpp" />
     <ClCompile Include="xmlutil.cpp" />
   </ItemGroup>
-
   <ItemGroup>
     <ClInclude Include="inc\aclutil.h" />
     <ClInclude Include="inc\apputil.h" />
@@ -180,14 +190,11 @@
     <ClInclude Include="inc\xmlutil.h" />
     <ClInclude Include="precomp.h" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="xsd\thmutil.xsd" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
   </ItemGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>
